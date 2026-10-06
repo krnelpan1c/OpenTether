@@ -1,0 +1,12 @@
+# Normalise text files to LF in the repository.
+* text=auto
+
+# Scripts must keep their native line endings to run.
+*.sh      text eol=lf
+gradlew   text eol=lf
+*.bat     text eol=crlf
+*.ps1     text eol=crlf
+
+# Binaries.
+*.jar     binary
+*.png     binary

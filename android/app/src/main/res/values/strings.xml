@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenTether</string>
+
+    <!-- Navigation -->
+    <string name="nav_share">Share</string>
+    <string name="nav_activity">Activity</string>
+    <string name="nav_about">About</string>
+
+    <!-- Status -->
+    <string name="status_idle">Not sharing</string>
+    <string name="status_idle_detail">Pick how your computer connects below.</string>
+    <string name="status_waiting">Waiting for a computer</string>
+    <string name="status_sharing">Sharing your connection</string>
+    <string name="status_starting">Starting…</string>
+    <string name="status_no_upstream">No mobile data</string>
+
+    <!-- Modes -->
+    <string name="section_share_over">Share over</string>
+    <string name="mode_usb">USB</string>
+    <string name="mode_wifi">Wi-Fi Direct</string>
+    <string name="stop_sharing">Stop sharing</string>
+
+    <!-- USB -->
+    <string name="usb_title">USB</string>
+    <string name="usb_step_1">Connect this phone to your computer with a USB cable.</string>
+    <string name="usb_step_2">On the computer, run this as administrator:</string>
+    <string name="usb_step_3">Accept the USB debugging prompt on the phone if it appears.</string>
+    <string name="usb_debugging_off">USB debugging is off. Turn it on in Developer options so the computer can reach the phone.</string>
+    <string name="usb_accessory_connected">Connected over USB accessory mode (experimental). Unplug the cable or tap Stop sharing to end.</string>
+    <string name="usb_open_dev_options">Open Developer options</string>
+
+    <!-- Wi-Fi Direct -->
+    <string name="wifi_title">Wi-Fi Direct</string>
+    <string name="wifi_network">Network</string>
+    <string name="wifi_password">Password</string>
+    <string name="wifi_instructions">Join this network on your computer, then copy the pairing command and run it as administrator. Anyone with this code can use your data, so keep it private.</string>
+    <string name="wifi_copy_command">Copy pairing command</string>
+    <string name="wifi_share_link">Share link</string>
+    <string name="wifi_starting">Creating Wi-Fi Direct group…</string>
+    <string name="proxy_title">Devices without the app</string>
+    <string name="proxy_subtitle">Share through a proxy with phones, tablets and consoles in this group</string>
+    <string name="proxy_address">HTTP / SOCKS5 proxy</string>
+    <string name="proxy_pac">Proxy auto-config URL</string>
+    <string name="proxy_instructions">On the other device, join this network, then edit it: Advanced options → Proxy → Manual, and enter the address and port above (or choose Proxy Auto-Config and use the URL). Only apps that honour proxy settings work in this mode; games and most UDP traffic need the desktop client.</string>
+    <string name="wifi_permission_needed">OpenTether needs the Nearby devices permission to create a Wi-Fi Direct group.</string>
+
+    <!-- Upstream -->
+    <string name="section_internet_source">Internet source</string>
+    <string name="upstream_mobile">Mobile data</string>
+    <string name="upstream_any">Any network</string>
+    <string name="upstream_unavailable">Waiting for a network…</string>
+    <string name="ipv6_badge">IPv6</string>
+
+    <!-- Stats -->
+    <string name="section_statistics">This session</string>
+    <string name="stat_computers">Computers</string>
+    <string name="stat_tcp">Connections</string>
+    <string name="stat_udp">UDP flows</string>
+    <string name="stat_dns">DNS lookups</string>
+    <string name="stat_total">Data used</string>
+    <string name="rate_up">Upload</string>
+    <string name="rate_down">Download</string>
+
+    <!-- Activity -->
+    <string name="activity_empty">Nothing yet. Events from the relay will show up here.</string>
+    <string name="activity_clear">Clear</string>
+    <plurals name="activity_events">
+        <item quantity="one">%d event</item>
+        <item quantity="other">%d events</item>
+    </plurals>
+
+    <!-- About -->
+    <string name="about_tagline">Free and open-source tethering that shares your phone\'s data the way its own apps use it.</string>
+    <string name="about_security">Security</string>
+    <string name="about_fingerprint">Phone fingerprint</string>
+    <string name="about_pairing_code">Pairing code</string>
+    <string name="about_reset_pairing">Reset pairing</string>
+    <string name="about_reset_pairing_detail">Disconnects every computer. They will need to pair again.</string>
+    <string name="about_background">Keep running in the background</string>
+    <string name="about_background_detail">Exclude OpenTether from battery optimisation so the connection survives with the screen off.</string>
+    <string name="about_open_settings">Open settings</string>
+    <string name="about_desktop">Desktop client</string>
+    <string name="about_desktop_detail">Get the opentether desktop client for Windows, Linux or macOS from the project\'s releases page.</string>
+    <string name="about_carrier_note">You are responsible for following your carrier\'s terms of service.</string>
+    <string name="about_version">Version %1$s · core %2$s</string>
+
+    <!-- Notification -->
+    <string name="notif_channel">Sharing status</string>
+    <string name="notif_channel_desc">Shown while OpenTether shares your connection.</string>
+    <string name="notif_title_waiting">Waiting for a computer</string>
+    <plurals name="notif_title_sharing">
+        <item quantity="one">Sharing with %1$d computer</item>
+        <item quantity="other">Sharing with %1$d computers</item>
+    </plurals>
+    <string name="notif_stop">Stop</string>
+
+    <string name="copied">Copied</string>
+</resources>

@@ -2,7 +2,7 @@
 
 A free, open-source alternative to PdaNet+. OpenTether shares your Android phone's mobile data with a computer over **USB** or **Wi-Fi Direct**. The computer's traffic leaves the phone through the OpenTether app's own sockets, so it doesn't go through Android's tethering/hotspot stack.
 
-Unlike proxy-based tools, the desktop client creates a **virtual network adapter** and carries **all** IP traffic, including **TCP, UDP, DNS, IPv6 and QUIC**. That should fix apps such as Steam, game launchers and voice chat, which fail when only TCP gets through a proxy. See [PLAN.md](PLAN.md) for the reasoning.
+Unlike proxy-based tools, the desktop client creates a **virtual network adapter** and carries **all** IP traffic, including **TCP, UDP, DNS, IPv6 and QUIC**. That should fix apps such as Steam, game launchers and voice chat, which fail when only TCP gets through a proxy.
 
 > **Status:** early development (Phase 1). It works end-to-end in tests, but hasn't been tested on real phones and carriers yet.
 >
@@ -53,8 +53,9 @@ go test ./...
 scripts/build-android-core.sh          # or scripts\build-android-core.ps1 on Windows
 cd android && ./gradlew :app:assembleDebug
 
-# Desktop client (+ wintun.dll on Windows)
+# Desktop client for Windows, Linux and macOS (amd64 + arm64) into dist/<os>-<arch>/
 scripts/build-desktop.sh               # or scripts\build-desktop.ps1
+scripts/build-desktop.sh linux arm64   # one target (PowerShell: -Targets linux/arm64)
 ```
 
 ## Using it
@@ -87,7 +88,3 @@ Add `--stats` to see live throughput. `opentether forget` clears paired phones.
 The proxy speaks HTTP (including CONNECT) and SOCKS5 with UDP ASSOCIATE. Like PdaNet's Wi-Fi mode, it only helps apps that use proxy settings.
 
 **Developing without a phone**: run `opentether-relay` on any machine and point the client at it with `opentether usb --endpoint 127.0.0.1:47101`.
-
-## License
-
-To be decided before outside contributions are accepted (GPL-3.0 or Apache-2.0; see PLAN.md §6).

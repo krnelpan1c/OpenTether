@@ -88,10 +88,6 @@ The proxy speaks HTTP (including CONNECT) and SOCKS5 with UDP ASSOCIATE. Like Pd
 
 **Developing without a phone**: run `opentether-relay` on any machine and point the client at it with `opentether usb --endpoint 127.0.0.1:47101`.
 
-## Roadmap
-
-See [PLAN.md](PLAN.md). Next up: testing on real devices against the Phase 1 test matrix, then USB without developer options (Android Open Accessory), proxy-only mode for consoles, and a desktop tray app.
-
 ## License
 
 To be decided before outside contributions are accepted (GPL-3.0 or Apache-2.0; see PLAN.md §6).

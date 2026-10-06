@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenTether — Free, open-source PdaNet alternative for USB &amp; Wi-Fi Direct tethering</title>
+  <meta name="description" content="OpenTether shares your Android phone's internet with your PC over USB or Wi-Fi Direct. Free and open source, with full UDP support so Steam, games and voice chat work. Windows, Linux and macOS.">
+  <meta name="keywords" content="PdaNet alternative, USB tethering, Wi-Fi Direct tethering, Android tethering app, free tethering, tether phone to PC, open source tethering, Steam tethering">
+  <link rel="canonical" href="https://krnelpan1c.github.io/OpenTether/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f8faf8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101414" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OpenTether">
+  <meta property="og:title" content="OpenTether — share your phone's internet with your PC">
+  <meta property="og:description" content="Free, open-source tethering over USB or Wi-Fi Direct. Every app works, including Steam, games and voice chat.">
+  <meta property="og:url" content="https://krnelpan1c.github.io/OpenTether/">
+  <meta property="og:image" content="https://krnelpan1c.github.io/OpenTether/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OpenTether: share your phone's internet with your PC over USB or Wi-Fi Direct">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenTether — share your phone's internet with your PC">
+  <meta name="twitter:description" content="Free, open-source tethering over USB or Wi-Fi Direct. Every app works, including Steam, games and voice chat.">
+  <meta name="twitter:image" content="https://krnelpan1c.github.io/OpenTether/assets/og-image.png">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,100..151,400..900&amp;family=Roboto+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0&amp;icon_names=add,android,bolt,cancel,cell_tower,check_circle,code,computer,desktop_windows,devices,download,home,laptop_mac,lock,phone_android,public,sports_esports,terminal,usb,videogame_asset,wifi_tethering&amp;display=block">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://krnelpan1c.github.io/OpenTether/#website",
+        "url": "https://krnelpan1c.github.io/OpenTether/",
+        "name": "OpenTether",
+        "description": "Free, open-source tethering for Android over USB or Wi-Fi Direct."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "OpenTether",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android 10+, Windows, Linux, macOS",
+        "description": "Shares an Android phone's mobile data with a computer over USB or Wi-Fi Direct. A virtual network adapter on the computer carries all traffic, including TCP, UDP, DNS, IPv6 and QUIC.",
+        "url": "https://krnelpan1c.github.io/OpenTether/",
+        "downloadUrl": "https://github.com/krnelpan1c/OpenTether/releases",
+        "isAccessibleForFree": true,
+        "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "USB tethering through adb",
+          "Wi-Fi Direct tethering with QR code pairing",
+          "HTTP and SOCKS5 proxy for devices without the desktop client",
+          "Full UDP support for games, Steam and voice chat",
+          "Encrypted QUIC connection between phone and computer"
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "OpenTether",
+        "codeRepository": "https://github.com/krnelpan1c/OpenTether",
+        "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+        "programmingLanguage": ["Go", "Kotlin"],
+        "runtimePlatform": "Android, Windows, Linux, macOS"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is OpenTether free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. OpenTether is free and open source under the GNU GPL v3.0, with no ads, accounts or time limits. The code is on GitHub." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do Steam and some games fail with PdaNet, and does OpenTether fix it?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tethering apps that work through a proxy only carry TCP connections from apps that respect proxy settings. Steam, online games and voice chat rely on UDP and often ignore proxy settings, so they fail unless you add a VPN. OpenTether's desktop client creates a virtual network adapter that sends every packet, including UDP, DNS and IPv6, through the phone, so these apps don't need a workaround." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does OpenTether use my phone's hotspot?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. OpenTether doesn't use Android's built-in hotspot or USB tethering. The app opens ordinary network connections on the phone on the computer's behalf, the same way any other app uses mobile data. You are responsible for following your carrier's terms of service." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to root my phone?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. OpenTether works on Android 10 and newer without root. USB mode uses adb, so it needs USB debugging turned on in Developer options. Wi-Fi Direct mode needs nothing extra." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the connection between my phone and computer secure?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Phone and computer talk over QUIC with TLS 1.3 encryption. The computer pins the phone's certificate, and Wi-Fi Direct connections also need a pairing code from a QR code shown on the phone." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can phones, tablets or game consoles use OpenTether?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, through proxy mode. Devices that can't run the desktop client join the phone's Wi-Fi Direct network and set its HTTP or SOCKS5 proxy, or proxy auto-config, in their network settings. Only apps that honour proxy settings work in this mode." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does OpenTether work with iPhone?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. The phone app is for Android 10 and newer. The desktop client runs on Windows, Linux and macOS." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="OpenTether home">
+        <img src="assets/favicon.svg" alt="" width="40" height="40">
+        OpenTether
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#setup">Setup</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-tonal btn-sm" href="https://github.com/krnelpan1c/OpenTether">
+        <span class="icon" aria-hidden="true">code</span> GitHub
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="blob blob-1 shape shape-cookie12" aria-hidden="true"></div>
+      <div class="blob blob-2 shape shape-clover" aria-hidden="true"></div>
+      <div class="blob blob-3 shape shape-burst" aria-hidden="true"></div>
+      <div class="wrap">
+        <div>
+          <span class="chip"><span class="icon" aria-hidden="true">bolt</span>Free &amp; open source · early development</span>
+          <h1>Share your phone's internet with <em>every app</em> on your PC.</h1>
+          <p class="lead">
+            OpenTether is a free, open-source alternative to PdaNet. Connect your Android phone over USB or
+            Wi-Fi Direct, and your computer gets the phone's mobile data with full support for games, Steam
+            and voice chat.
+          </p>
+          <div class="cta">
+            <a class="btn btn-filled" href="https://github.com/krnelpan1c/OpenTether">
+              <span class="icon" aria-hidden="true">download</span> Get it on GitHub
+            </a>
+            <a class="btn btn-tonal" href="#how">How it works</a>
+          </div>
+          <ul class="platforms" aria-label="Supported platforms">
+            <li><span class="icon" aria-hidden="true">android</span>Android 10+</li>
+            <li><span class="icon" aria-hidden="true">desktop_windows</span>Windows</li>
+            <li><span class="icon" aria-hidden="true">terminal</span>Linux</li>
+            <li><span class="icon" aria-hidden="true">laptop_mac</span>macOS</li>
+          </ul>
+        </div>
+
+        <!-- Mock-up of the app's Share screen -->
+        <div class="phone" role="img" aria-label="The OpenTether app sharing its connection with a computer over USB">
+          <div class="screen" aria-hidden="true">
+            <div class="screen-bar"><span>9:41</span><span>5G ▲▼</span></div>
+            <div class="screen-title">OpenTether</div>
+            <div class="screen-sub">Sharing your connection</div>
+            <div class="status">
+              <div class="badge">
+                <div class="shape shape-cookie9"></div>
+                <span class="icon">usb</span>
+              </div>
+              <h3>Sharing your connection</h3>
+              <p>DESKTOP-GAMING</p>
+              <div class="rates">
+                <div class="rate"><small>↑ Upload</small><b>4.2</b> <span>MB/s</span></div>
+                <div class="rate"><small>↓ Download</small><b>31.6</b> <span>MB/s</span></div>
+              </div>
+            </div>
+            <div class="segmented">
+              <span class="on"><span class="icon">usb</span>USB</span>
+              <span><span class="icon">wifi_tethering</span>Wi-Fi Direct</span>
+            </div>
+            <div class="tiles">
+              <div class="tile"><b>38</b><small>Connections</small></div>
+              <div class="tile"><b>12</b><small>UDP flows</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section id="features" class="tinted" aria-labelledby="features-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Why OpenTether</p>
+          <h2 id="features-title">Tethering that works for every app</h2>
+          <p>Proxy-based tethering only helps the browser. OpenTether gives your computer a real network connection through your phone.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="glyph primary"><div class="shape shape-cookie9"></div><span class="icon" aria-hidden="true">sports_esports</span></div>
+            <h3>Games, Steam and voice chat</h3>
+            <p>A virtual network adapter carries all traffic: TCP, UDP, DNS, IPv6 and QUIC. Apps work without any proxy settings or a VPN.</p>
+          </article>
+          <article class="card">
+            <div class="glyph"><div class="shape shape-clover"></div><span class="icon" aria-hidden="true">cell_tower</span></div>
+            <h3>Uses the phone's own connection</h3>
+            <p>OpenTether doesn't use Android's hotspot. The app opens connections on the phone for your computer, just like any other app uses mobile data.</p>
+          </article>
+          <article class="card">
+            <div class="glyph tertiary"><div class="shape shape-burst"></div><span class="icon" aria-hidden="true">bolt</span></div>
+            <h3>Fast over USB and Wi-Fi Direct</h3>
+            <p>Early tests reached about 280 Mbit/s over a USB 2.0 cable and up to 600 Mbit/s over Wi-Fi Direct.</p>
+          </article>
+          <article class="card">
+            <div class="glyph tertiary"><div class="shape shape-cookie12"></div><span class="icon" aria-hidden="true">devices</span></div>
+            <h3>Phones, tablets and consoles too</h3>
+            <p>Devices that can't run the desktop client connect through a built-in HTTP and SOCKS5 proxy on the phone's Wi-Fi Direct network.</p>
+          </article>
+          <article class="card">
+            <div class="glyph primary"><div class="shape shape-burst"></div><span class="icon" aria-hidden="true">lock</span></div>
+            <h3>Encrypted and paired</h3>
+            <p>Traffic between phone and computer is encrypted with QUIC and TLS 1.3. Wi-Fi Direct pairing uses a QR code shown on the phone.</p>
+          </article>
+          <article class="card">
+            <div class="glyph"><div class="shape shape-cookie9"></div><span class="icon" aria-hidden="true">code</span></div>
+            <h3>Free and open source</h3>
+            <p>Licensed under the GNU GPL v3.0. No ads, accounts or time limits, and no root needed. The code for the Android app and desktop client is on GitHub.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Steam problem -->
+    <section aria-labelledby="steam-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The Steam problem</p>
+          <h2 id="steam-title">Why some apps fail with other tethering apps</h2>
+          <p>Steam, online games and voice chat often fail with proxy-based tethering, leaving a VPN as the usual workaround. OpenTether is built so they work directly.</p>
+        </div>
+        <div class="compare">
+          <div class="card bad">
+            <h3><span class="icon" aria-hidden="true">cancel</span>Proxy-based tethering</h3>
+            <ul>
+              <li><span class="icon" aria-hidden="true">cancel</span>Only carries TCP, so UDP traffic for games, Steam and voice chat is dropped.</li>
+              <li><span class="icon" aria-hidden="true">cancel</span>Only apps that read the system proxy settings use it; many games and launchers don't.</li>
+              <li><span class="icon" aria-hidden="true">cancel</span>Windows can report "No Internet", so some apps switch to offline mode.</li>
+            </ul>
+          </div>
+          <div class="card good">
+            <h3><span class="icon" aria-hidden="true">check_circle</span>OpenTether</h3>
+            <ul>
+              <li><span class="icon" aria-hidden="true">check_circle</span>Carries every packet, including UDP, DNS, IPv6 and QUIC.</li>
+              <li><span class="icon" aria-hidden="true">check_circle</span>A virtual network adapter means every app is covered, with nothing to configure.</li>
+              <li><span class="icon" aria-hidden="true">check_circle</span>Windows sees a normal internet connection.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="tinted" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-title">From your apps to the mobile network</h2>
+          <p>The desktop client and the phone app work together over one encrypted connection.</p>
+        </div>
+        <ol class="flow" role="list">
+          <li class="card">
+            <div class="glyph"><div class="shape shape-cookie9"></div><span class="icon" aria-hidden="true">computer</span></div>
+            <h3>1. Your computer</h3>
+            <p>A virtual network adapter collects all traffic from your apps.</p>
+          </li>
+          <li class="card">
+            <div class="glyph primary"><div class="shape shape-clover"></div><span class="icon" aria-hidden="true">usb</span></div>
+            <h3>2. USB or Wi-Fi Direct</h3>
+            <p>Traffic travels to the phone over an encrypted QUIC connection.</p>
+          </li>
+          <li class="card">
+            <div class="glyph tertiary"><div class="shape shape-burst"></div><span class="icon" aria-hidden="true">phone_android</span></div>
+            <h3>3. The OpenTether app</h3>
+            <p>The app opens matching connections on the phone's mobile data.</p>
+          </li>
+          <li class="card">
+            <div class="glyph"><div class="shape shape-cookie12"></div><span class="icon" aria-hidden="true">public</span></div>
+            <h3>4. The internet</h3>
+            <p>Replies come back the same way, to the app that asked for them.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Setup -->
+    <section id="setup" aria-labelledby="setup-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Setup</p>
+          <h2 id="setup-title">Connect in a minute</h2>
+          <p>Install the OpenTether app on your phone and the desktop client on your computer, then choose how to connect.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="glyph primary"><div class="shape shape-cookie9"></div><span class="icon" aria-hidden="true">usb</span></div>
+            <h3>USB</h3>
+            <ol class="steps">
+              <li>Turn on USB debugging in Developer options, then turn on <b>USB</b> in the app.</li>
+              <li>Connect the phone with a cable.</li>
+              <li>On the computer, run as administrator: <code>opentether usb</code></li>
+            </ol>
+          </article>
+          <article class="card">
+            <div class="glyph"><div class="shape shape-clover"></div><span class="icon" aria-hidden="true">wifi_tethering</span></div>
+            <h3>Wi-Fi Direct</h3>
+            <ol class="steps">
+              <li>Turn on <b>Wi-Fi Direct</b> in the app. A QR code and pairing link appear.</li>
+              <li>On the computer, run: <code>opentether wifi --pair "&lt;link&gt;"</code></li>
+              <li>The computer joins the phone's network by itself. Next time, just run <code>opentether wifi</code>.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <div class="glyph tertiary"><div class="shape shape-burst"></div><span class="icon" aria-hidden="true">videogame_asset</span></div>
+            <h3>Other devices</h3>
+            <ol class="steps">
+              <li>Turn on <b>Wi-Fi Direct</b> and <b>Devices without the app</b> in the app.</li>
+              <li>Join the phone's <code>DIRECT-OT-…</code> network on the other device.</li>
+              <li>Set its proxy to <code>192.168.49.1</code> port <code>8080</code>.</li>
+            </ol>
+          </article>
+        </div>
+        <p class="note">Only apps that honour proxy settings work for other devices. Computers should use the desktop client for full support.</p>
+      </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="tinted" aria-labelledby="reqs-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Requirements</p>
+          <h2 id="reqs-title">What you need</h2>
+        </div>
+        <table class="reqs">
+          <tbody>
+            <tr><th scope="row">Phone</th><td>Android 10 or newer. No root needed. USB mode needs USB debugging; Wi-Fi Direct needs Wi-Fi turned on.</td></tr>
+            <tr><th scope="row">Windows</th><td>Windows 10 or 11, run as administrator. The virtual adapter driver (Wintun) is included.</td></tr>
+            <tr><th scope="row">Linux</th><td>Run with sudo. NetworkManager lets the client join Wi-Fi Direct automatically.</td></tr>
+            <tr><th scope="row">macOS</th><td>Run with sudo. The client isn't signed yet, so clear the quarantine flag the first time.</td></tr>
+            <tr><th scope="row">USB mode</th><td>adb (Android platform-tools) on the computer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Questions and answers</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is OpenTether free?</summary>
+            <div class="answer"><p>Yes. OpenTether is free and open source under the GNU GPL v3.0, with no ads, accounts or time limits. The code is on GitHub.</p></div>
+          </details>
+          <details>
+            <summary>Why do Steam and some games fail with PdaNet, and does OpenTether fix it?</summary>
+            <div class="answer">
+              <p>Tethering apps that work through a proxy only carry TCP connections from apps that respect proxy settings. Steam, online games and voice chat rely on UDP and often ignore proxy settings, so they fail unless you add a VPN.</p>
+              <p>OpenTether's desktop client creates a virtual network adapter that sends every packet, including UDP, DNS and IPv6, through the phone, so these apps don't need a workaround.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Does OpenTether use my phone's hotspot?</summary>
+            <div class="answer">
+              <p>No. OpenTether doesn't use Android's built-in hotspot or USB tethering. The app opens ordinary network connections on the phone on the computer's behalf, the same way any other app uses mobile data.</p>
+              <p>You are responsible for following your carrier's terms of service.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Do I need to root my phone?</summary>
+            <div class="answer"><p>No. OpenTether works on Android 10 and newer without root. USB mode uses adb, so it needs USB debugging turned on in Developer options. Wi-Fi Direct mode needs nothing extra.</p></div>
+          </details>
+          <details>
+            <summary>Is the connection between my phone and computer secure?</summary>
+            <div class="answer"><p>Yes. Phone and computer talk over QUIC with TLS 1.3 encryption. The computer pins the phone's certificate, and Wi-Fi Direct connections also need a pairing code from a QR code shown on the phone.</p></div>
+          </details>
+          <details>
+            <summary>Can phones, tablets or game consoles use OpenTether?</summary>
+            <div class="answer"><p>Yes, through proxy mode. Devices that can't run the desktop client join the phone's Wi-Fi Direct network and set its HTTP or SOCKS5 proxy, or proxy auto-config, in their network settings. Only apps that honour proxy settings work in this mode.</p></div>
+          </details>
+          <details>
+            <summary>Does OpenTether work with iPhone?</summary>
+            <div class="answer"><p>No. The phone app is for Android 10 and newer. The desktop client runs on Windows, Linux and macOS.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="band">
+          <div class="deco deco-1 shape shape-cookie12" aria-hidden="true"></div>
+          <div class="deco deco-2 shape shape-clover" aria-hidden="true"></div>
+          <h2 id="cta-title">Get OpenTether</h2>
+          <p>OpenTether is in early development. Grab the source, build it, and tell us how it works with your phone and carrier.</p>
+          <div class="cta">
+            <a class="btn btn-filled" href="https://github.com/krnelpan1c/OpenTether"><span class="icon" aria-hidden="true">code</span> View on GitHub</a>
+            <a class="btn btn-outlined" href="https://github.com/krnelpan1c/OpenTether/issues">Report an issue</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <a class="brand" href="./"><img src="assets/favicon.svg" alt="" width="32" height="32">OpenTether</a>
+        <p>Free, open-source tethering for Android over USB and Wi-Fi Direct.</p>
+      </div>
+      <nav aria-labelledby="footer-project">
+        <h2 id="footer-project">Project</h2>
+        <ul>
+          <li><a href="https://github.com/krnelpan1c/OpenTether">Source code</a></li>
+          <li><a href="https://github.com/krnelpan1c/OpenTether/releases">Releases</a></li>
+          <li><a href="https://github.com/krnelpan1c/OpenTether/issues">Issues</a></li>
+          <li><a href="https://github.com/krnelpan1c/OpenTether/blob/main/LICENSE">License (GPL-3.0)</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="footer-page">
+        <h2 id="footer-page">On this page</h2>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#setup">Setup</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <p class="fine">
+        OpenTether is an independent project and isn't affiliated with or endorsed by PdaNet or its developers.
+        PdaNet is a trademark of its owner. You are responsible for following your carrier's terms of service.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

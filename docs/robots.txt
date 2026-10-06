@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://krnelpan1c.github.io/OpenTether/sitemap.xml

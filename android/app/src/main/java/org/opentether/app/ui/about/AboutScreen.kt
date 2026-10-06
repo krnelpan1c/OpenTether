@@ -114,6 +114,12 @@ fun AboutScreen(state: TetherState, contentPadding: PaddingValues) {
             modifier = Modifier.padding(horizontal = 8.dp),
         )
         Text(
+            stringResource(R.string.about_license),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(horizontal = 8.dp),
+        )
+        Text(
             stringResource(R.string.about_version, appVersion(context), Core.version),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,

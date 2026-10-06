@@ -1,5 +1,7 @@
 # OpenTether
 
+**Website: [krnelpan1c.github.io/OpenTether](https://krnelpan1c.github.io/OpenTether/)**
+
 A free, open-source alternative to PdaNet+. OpenTether shares your Android phone's mobile data with a computer over **USB** or **Wi-Fi Direct**. The computer's traffic leaves the phone through the OpenTether app's own sockets, so it doesn't go through Android's tethering/hotspot stack.
 
 Unlike proxy-based tools, the desktop client creates a **virtual network adapter** and carries **all** IP traffic, including **TCP, UDP, DNS, IPv6 and QUIC**. That should fix apps such as Steam, game launchers and voice chat, which fail when only TCP gets through a proxy.
@@ -88,3 +90,9 @@ Add `--stats` to see live throughput. `opentether forget` clears paired phones.
 The proxy speaks HTTP (including CONNECT) and SOCKS5 with UDP ASSOCIATE. Like PdaNet's Wi-Fi mode, it only helps apps that use proxy settings.
 
 **Developing without a phone**: run `opentether-relay` on any machine and point the client at it with `opentether usb --endpoint 127.0.0.1:47101`.
+
+## License
+
+OpenTether is free software, licensed under the [GNU General Public License v3.0](LICENSE). You can use, study, share and modify it. If you distribute modified versions, they must also be released under the GPL-3.0 with their source code.
+
+The Windows build bundles two third-party libraries under their own licenses: `wintun.dll` ([Wintun prebuilt binaries license](https://www.wintun.net/)) and `libusb-1.0.dll` ([LGPL-2.1](https://github.com/libusb/libusb/blob/master/COPYING)).

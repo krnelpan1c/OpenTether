@@ -1,6 +1,6 @@
 # OpenTether
 
-**Website: [krnelpan1c.github.io/OpenTether](https://krnelpan1c.github.io/OpenTether/)**
+[krnelpan1c.github.io/OpenTether](https://krnelpan1c.github.io/OpenTether/)**
 
 A free, open-source alternative to PdaNet+. OpenTether shares your Android phone's mobile data with a computer over **USB** or **Wi-Fi Direct**. The computer's traffic leaves the phone through the OpenTether app's own sockets, so it doesn't go through Android's tethering/hotspot stack.
 
